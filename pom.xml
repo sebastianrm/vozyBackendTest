@@ -13,12 +13,12 @@
 	<artifactId>vozyBackendTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>vozyBackendTest</name>
+	<packaging>war</packaging>
 	<description>Vozy - Prueba Técnica Backend</description>
+	
 	<properties>
 		<java.version>1.8</java.version>
-        <test.coverage.rate>70</test.coverage.rate>
-        <cobertura.skip>false</cobertura.skip>
-        <cobertura.skip>false</cobertura.skip>
+		<start-class>com.srm.vozyBackendTest.VozyBackendTestApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,6 +44,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+			    <exclusion>
+			        <groupId>org.junit.vintage</groupId>
+			        <artifactId>junit-vintage-engine</artifactId>
+			    </exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -54,16 +60,25 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>de.flapdoodle.embed</groupId>
-			<artifactId>de.flapdoodle.embed.mongo</artifactId>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>de.flapdoodle.embed</groupId> -->
+<!-- 			<artifactId>de.flapdoodle.embed.mongo</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
-			<version>2.1.1</version>
+			<version>0.9.1</version>
 		</dependency>
+		
+<!-- 		TESTING -->
+
+        <dependency>
+             <groupId>org.junit.jupiter</groupId>
+             <artifactId>junit-jupiter-engine</artifactId>
+             <scope>test</scope>
+         </dependency>
+		
 	</dependencies>
 
 	<build>
@@ -71,35 +86,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<configuration>
+							<mainClass>${start-class}</mainClass>
+						</configuration>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-			
-			<plugin>
-			  <groupId>org.codehaus.mojo</groupId>
-			  <artifactId>cobertura-maven-plugin</artifactId>
-			  <version>2.7</version>
-			  <configuration>
-			    <instrumentation>
-			      <ignores>
-			        <ignore>com.srm.vozyBackendTest.document.*</ignore>
-			        <ignore>com.srm.vozyBackendTest.vo.*</ignore>
-			      </ignores>
-			      <excludes>
-			        <exclude>com/srm/vozyBackendTest/**/*.class</exclude>
-			        <exclude>com/srm/**/*Test.class</exclude>
-			      </excludes>
-			    </instrumentation>
-			  </configuration>
-			  <executions>
-			    <execution>
-			      <goals>
-			        <goal>clean</goal>
-			      </goals>
-			    </execution>
-			  </executions>
-			</plugin>
-			
 		</plugins>
 	</build>
+	
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+		</plugins>
+	</reporting>
+	
 
-	<packaging>war</packaging>
 </project>

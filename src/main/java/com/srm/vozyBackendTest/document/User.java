@@ -23,6 +23,28 @@ public class User {
 	private String password;
 	private String correo;
 	private Boolean activo;
+	
+	
+	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public User(ObjectId _id, String userName, String password, String correo, Boolean activo) {
+		super();
+		this._id = _id;
+		this.userName = userName;
+		this.password = password;
+		this.correo = correo;
+		this.activo = activo;
+	}
+	public User(String userName, String password, String correo, Boolean activo) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.correo = correo;
+		this.activo = activo;
+	}
 	/**
 	 * @return the userName
 	 */

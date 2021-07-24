@@ -41,3 +41,4 @@ local.properties
 .loadpath
 .factorypath
 /logs/
+/.attach_pid32213

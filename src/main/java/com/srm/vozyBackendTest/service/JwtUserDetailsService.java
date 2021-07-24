@@ -57,17 +57,4 @@ public class JwtUserDetailsService implements UserDetailsService {
 		return userRepo.save(user);
 
 	}
-	
-	public void delete(User user) {
-		
-		userRepo.delete(user);
-		
-	}
-	
-	public void update(User user) {
-		
-		userRepo.save(user);
-		
-	}
-
 }

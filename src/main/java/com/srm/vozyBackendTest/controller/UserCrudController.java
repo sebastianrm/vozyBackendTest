@@ -1,8 +1,10 @@
 /**
  * 
  */
-package com.srm.vozyBackendTest.ws;
+package com.srm.vozyBackendTest.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,9 @@ import com.srm.vozyBackendTest.vo.UserVo;
  *
  */
 @RestController
-public class UserCrud {
+public class UserCrudController {
+	
+	private static final Logger log = LoggerFactory.getLogger(UserCrudController.class);
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -51,8 +55,8 @@ public class UserCrud {
 		try {
 			authenticate(userReq.getUsername(), userReq.getPassword());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Error al autenticar");
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Error al autenticar");
 		}
 		
 		final UserDetails userDetails = userDetailsService
@@ -68,10 +72,10 @@ public class UserCrud {
 	@PostMapping(value="/singin")
 	public ResponseEntity<?> registrar(@RequestBody User user){
 		
-		UserDetails loadUserByUsername = userDetailsService.loadUserByUsername(user.getUserName());
+		User findByUserName = userRepo.findByUserName(user.getUserName());
 		
 		
-		if (loadUserByUsername == null) {
+		if (findByUserName == null) {
 			
 			return ResponseEntity.ok(userDetailsService.save(user));
 		}else {
@@ -90,8 +94,8 @@ public class UserCrud {
 		if (findByUserName != null) {
 			
 			user.set_id(findByUserName.get_id());
-			
-			return ResponseEntity.ok(userRepo.save(user));
+			userDetailsService.save(user);
+			return ResponseEntity.ok("Usuario Modificado");
 			
 		}else {
 			
@@ -102,7 +106,7 @@ public class UserCrud {
 	}
 	
 	@DeleteMapping(value="/deleteuser")
-	public ResponseEntity<?> eliminarUsuario(User user){
+	public ResponseEntity<?> eliminarUsuario(@RequestBody User user){
 		
 		User findByUserName = userRepo.findByUserName(user.getUserName());
 		
