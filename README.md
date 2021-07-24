@@ -66,7 +66,7 @@ http://<IP-contenedor>:8080/edituser
 
 
 # # # DELETE (Protegido por contraseña)
-http://<IP-contenedor>:8080/deleteuser
+http://< IP-contenedor >:8080/deleteuser
 
 	Autorization:"Bearer Token"
 	Body: json
