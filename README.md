@@ -31,6 +31,7 @@ la app escucha en el puerto 8080
 
 # # # GET
 http://<IP-contenedor>:8080/login
+
 	Body: json
 	Ejemplo:
 	{
@@ -52,6 +53,7 @@ http://<IP-contenedor>:8080/singin
 
 # # # PUT (Protegido por contraseña)
 http://<IP-contenedor>:8080/edituser
+
 	Autorization:"Bearer Token"
 	Body: json
 		Ejemplo:
@@ -65,6 +67,7 @@ http://<IP-contenedor>:8080/edituser
 
 # # # DELETE (Protegido por contraseña)
 http://<IP-contenedor>:8080/deleteuser
+
 	Autorization:"Bearer Token"
 	Body: json
 		Ejemplo:
