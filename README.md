@@ -2,7 +2,7 @@
 
 Login,micro servicio con SpringBoot, protegido por jwt y Spring Security, mongodb, y codigo analizado por cobertura Maven Plugin.
 
-# #Sistema construido con:
+# # Sistema construido con:
 
 1. java 1.8
 2. Maven 4
@@ -13,7 +13,7 @@ Login,micro servicio con SpringBoot, protegido por jwt y Spring Security, mongod
 5. Docker
 6. Cobertura (% codigo cubierto por pruebas unitarias)
 
-# #Instrucciones de uso
+# # Instrucciones de uso
 
 1. Bajar fuentes desde git.
 
@@ -29,7 +29,7 @@ Login,micro servicio con SpringBoot, protegido por jwt y Spring Security, mongod
 # # Servicios publicados
 la app escucha en el puerto 8080 
 
-# # #GET
+# # # GET
 http://<IP-contenedor>:8080/login
 	Body: json
 	Ejemplo:
@@ -38,7 +38,7 @@ http://<IP-contenedor>:8080/login
     "password": "123"
 	}
 
-# # #POST
+# # # POST
 http://<IP-contenedor>:8080/singin
 
 	Body: json
@@ -50,7 +50,7 @@ http://<IP-contenedor>:8080/singin
 	    "activo": "true"
 	}
 
-# # #PUT (Protegido por contraseña)
+# # # PUT (Protegido por contraseña)
 http://<IP-contenedor>:8080/edituser
 	Autorization:"Bearer Token"
 	Body: json
@@ -63,7 +63,7 @@ http://<IP-contenedor>:8080/edituser
 	}
 
 
-# # #DELETE (Protegido por contraseña)
+# # # DELETE (Protegido por contraseña)
 http://<IP-contenedor>:8080/deleteuser
 	Autorization:"Bearer Token"
 	Body: json
