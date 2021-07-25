@@ -26,12 +26,15 @@
 1. Bajar fuentes desde git.
 
 2. Ejecutar el comando Maven (compila y empaqueta):
+
 		mvn clean package
 		
 3. Construir el contenedor
+
 		docker build -t srm/vozybackendtest .
 			
 4. Publica el contenedor
+
 		docker run --publish 8080:8080 srm/vozybackendtest
 
 ## Servicios publicados
