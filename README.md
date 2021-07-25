@@ -1,6 +1,14 @@
 # vozyBackendTest
 
-Login,micro servicio con SpringBoot, protegido por jwt y Spring Security, mongodb, y codigo analizado por cobertura Maven Plugin.
+* Login
+* micro servicio con SpringBoot
+* Protegido por jwt y Spring Security
+* mongodb
+* codigo analizado por cobertura Maven Plugin.
+* cada usuario almacenado en la base dedatos, tiene su contraseña codificada con **bcryptEncoder**
+
+
+
 
 ## Sistema construido con:
 
@@ -29,7 +37,7 @@ Login,micro servicio con SpringBoot, protegido por jwt y Spring Security, mongod
 ## Servicios publicados
 la app escucha en el puerto 8080 
 
-### GET
+### GET - login
 http://< IP-contenedor >:8080/login
 
 	Body: json
@@ -39,7 +47,7 @@ http://< IP-contenedor >:8080/login
     "password": "123"
 	}
 
-### POST
+### POST - singin o registrar
 http://< IP-contenedor >:8080/singin
 
 	Body: json
@@ -51,7 +59,7 @@ http://< IP-contenedor >:8080/singin
 	    "activo": "true"
 	}
 
-### PUT (Protegido por contraseña)
+### PUT - edituser (Protegido por contraseña)
 http://< IP-contenedor >:8080/edituser
 
 	Autorization:"Bearer Token"
@@ -65,7 +73,7 @@ http://< IP-contenedor >:8080/edituser
 	}
 
 
-### DELETE (Protegido por contraseña)
+### DELETE - deleteuser (Protegido por contraseña)
 http://< IP-contenedor >:8080/deleteuser
 
 	Autorization:"Bearer Token"
