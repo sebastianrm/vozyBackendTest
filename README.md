@@ -25,11 +25,11 @@
 
 1. Bajar fuentes desde git.
 
-2. Ejecutar el comando Maven (compila y empaqueta):
+2. Ejecutar el comando Maven en el directorio **vozyBackendTest** (compila y empaqueta) :
 
 		mvn clean package
 		
-3. Construir el contenedor
+3. Construir el contenedor (en el directorio **vozyBackendTest**)
 
 		docker build -t srm/vozybackendtest .
 			
