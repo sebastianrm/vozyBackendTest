@@ -19,6 +19,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<start-class>com.srm.vozyBackendTest.VozyBackendTestApplication</start-class>
+		<sonar.projectKey>sebastianrm_vozyBackendTest</sonar.projectKey>
 	</properties>
 	<dependencies>
 		<dependency>
