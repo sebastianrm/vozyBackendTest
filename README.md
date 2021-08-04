@@ -8,8 +8,6 @@
 * cada usuario almacenado en la base dedatos, tiene su contraseña codificada con **bcryptEncoder**
 
 
-
-
 ## Sistema construido con:
 
 1. java 1.8
