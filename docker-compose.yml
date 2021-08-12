@@ -1,0 +1,25 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+#      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+#      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:vozy@mongo:27017/
+  vozybackendtest:
+    image: openjdk:8-jdk-alpine
+    build: .
+    ports:
+      - '8083:8080'
+    depends_on:
+      - mongo
+      - mongo-express
